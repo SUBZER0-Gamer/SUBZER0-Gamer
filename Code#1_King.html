@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA - JavaScript</title>
+    <style>
+        div {
+            text-align: center;
+            line-height: 100px; 
+            color: white;
+            width: 100px; 
+            height: 100px; 
+            position: absolute;
+        }
+
+        #one {
+            top: 100px; 
+            left: 50px; 
+        }
+
+        #two {
+            top: 210px; 
+            left: 50px; 
+        }
+
+        #three {
+            top: 320px; 
+            left: 50px; 
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="text">Data Structure & Algorithms in JavaScript</h1>
+    <div id="one">Hello</div>
+    <div id="two">Hello</div>
+    <div id="three">Hello</div>
+
+    <script>
+        const text = document.getElementById(`text`);
+        text.innerText = "DSA in JavaScript";
+        text.style.color = "crimson";
+
+        const divContainerOne = document.getElementById("one");
+        divContainerOne.style.backgroundColor = 'green';
+
+        const divContainerTwo = document.getElementById("two");
+        divContainerTwo.style.backgroundColor = 'dodgerblue';
+
+        const divContainerThree = document.getElementById("three");
+        divContainerThree.style.backgroundColor = 'crimson';
+        divContainerThree.style.opacity = 0.2;
+
+       
+        const colors1 = ['green', 'dodgerblue', 'crimson', 'yellow', 'orange'];
+        const colors2 = ['dodgerblue', 'crimson', 'yellow', 'orange', 'green'];
+        const colors3 = ['crimson', 'yellow', 'orange', 'green', 'dodgerblue'];
+        let currentIndex = 0;
+
+        
+        function changeBackgroundColor() {
+            divContainerOne.style.backgroundColor = colors1[currentIndex];
+            divContainerTwo.style.backgroundColor = colors2[currentIndex];
+            divContainerThree.style.backgroundColor = colors3[currentIndex];
+            
+            
+            currentIndex = (currentIndex + 1) % colors1.length;
+        }
+        setInterval(changeBackgroundColor, 3000);
+
+        /* CHRISTIAN KING CUA */
+    </script>
+</body>
+</html>

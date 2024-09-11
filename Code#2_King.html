@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encryption and Decryption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #a2c2e4, #e4f1f8); 
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4a90e2; 
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #4a90e2; 
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #357abd; 
+        }
+
+        button:active {
+            background: #2d6fb1; 
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        .warning {
+            color: #d9534f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <h1>Encryption and Decryption</h1>
+
+        <label for="originalText">Enter Text to Encrypt:</label>
+        <input type="text" id="originalText"><br>
+        <label for="shiftValue">Enter Shift Value:</label>
+        <input type="number" id="shiftValue" value="0"><br>
+
+        <button type="button" onclick="performEncryption()">Encrypt</button>
+        <button type="button" onclick="performDecryption()">Decrypt</button><br><br> 
+        
+        <p>Encryption Message: </p>
+        <p id="encryptionMessage"></p>
+        <p>Decryption Message: </p>
+        <p id="decryptionMessage"></p>
+        <p id="warningMessage" class="warning"></p>
+
+    </form>
+
+    <script>
+        var encryptedText = '';
+
+        function performEncryption() {
+            var text = document.getElementById('originalText').value;
+            var shift = parseInt(document.getElementById('shiftValue').value);
+            encryptedText = text_container(text, shift);
+            document.getElementById('encryptionMessage').innerText = encryptedText;
+            document.getElementById('decryptionMessage').innerText = ''; 
+            document.getElementById('warningMessage').innerText = ''; 
+        }
+
+        function performDecryption() {
+            if (encryptedText === '') {
+                document.getElementById('warningMessage').innerText = 'The text is not encrypted yet!';
+                document.getElementById('decryptionMessage').innerText = ''; 
+                return;
+            }
+            var shift = parseInt(document.getElementById('shiftValue').value);
+            var decryptedText = text_container(encryptedText, -shift);
+            document.getElementById('decryptionMessage').innerText = decryptedText;
+            document.getElementById('warningMessage').innerText = ''; 
+        }
+
+        function text_container(str, shift) {
+            if (shift < 0) {
+                return text_container(str, shift + 26);
+            }
+            var result = '';
+            for (var i = 0; i < str.length; i++) {
+                var c = str.charCodeAt(i);
+                if (c >= 65 && c <= 90) {
+                    result += String.fromCharCode((c - 65 + shift) % 26 + 65);
+                } else if (c >= 97 && c <= 122) {
+                    result += String.fromCharCode((c - 97 + shift) % 26 + 97);
+                } else {
+                    result += str.charAt(i);
+                }
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>
