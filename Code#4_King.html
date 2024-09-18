@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA</title>
+</head>
+<body>
+    <script>
+        /* class Student{
+            // Data (Properties)
+            // name, age, standard
+            
+            constructor(name, age, username) {
+                this.Name = name;
+                this.Age = age;
+                this.Username = username;
+            }
+
+            // Methods (Action)
+            study(){
+            // Study
+            console.log(`${this.Name} is studying.`)
+            }
+
+            Play(){
+            // Play
+            }
+
+            doHomeWork(){
+            // Do Home Work
+            }
+        }
+
+        const student = new Student('Jayson', 18, '0xSwenpai')
+
+        console.log(`My name is ${student.Name}, I am ${student.Age}. My username is ${student.Username}`)
+        student.study(); */
+
+
+        
+        /* // Define an abstract class Animal
+        function Animal() {
+            if (this.constructor === Animal) {
+                throw new Error(`Cannot instantiate abstract class Animal`);
+            }
+
+            this.makeSound = function () {
+                throw new Error(`Cannot call abstract method makeSound from Animal`);
+            }
+        }
+        
+        // Create a concrete class Dog that extends Animal
+        function Dog(name, age, sound) {
+            Animal.call(this);
+            this.name = name;
+            this.age = age;
+            this.sound = sound;
+
+            this.makeSound = function () { // anonymous function
+                console.log(`${this.name} ${this.sound}`);
+                console.log(`${this.name} age is ${this.age}`);
+            };
+        }
+
+        // Inherit from the abstract class
+        Dog.prototype = Object.create(Animal.prototype);
+        Dog.prototype.constructor = Dog;
+        
+        // Create an instance of the Dog class
+        let dog = new Dog("Buddy", 7, "barks");
+        dog.makeSound();
+
+        // Try to create an instance of
+        // the abstract class Animal
+        try {
+            let animal = new Animal();
+        } catch (error) {
+            console.error(error.message);
+        } */
+
+
+    class Shape {
+        constructor() {
+            if (new.target === Shape) {
+            throw new Error("Abstract class Shape cannot be instantiated directly.");
+            }
+        }
+
+        calculateArea() {
+            throw new Error("Method 'calculateArea()' must be implemented.");
+        }
+
+        calculatePerimeter() {
+            throw new Error("Method 'calculatePerimeter()' must be implemented.");
+        }
+
+        getShapeType() {
+            throw new Error("Method 'getShapeType()' must be implemented.");
+        }
+
+        describe() {
+            const area = this.calculateArea();
+            const perimeter = this.calculatePerimeter();
+            console.log(`This is a ${this.getShapeType()}. The area is ${area.toFixed(2)} and the perimeter is ${perimeter.toFixed(2)} respectively.`);
+        }
+    }
+
+    class Circle extends Shape {
+        constructor(radius) {
+        super();
+        this.radius = radius;
+        }
+
+        calculateArea() {
+            return Math.PI * Math.pow(this.radius, 2);
+        }
+
+        calculatePerimeter() {
+            return 2 * Math.PI * this.radius;
+        }
+
+        getShapeType() {
+            return "Circle";
+        }
+    }
+
+    class Rectangle extends Shape {
+        constructor(width, height) {
+            super();
+            this.width = width;
+            this.height = height;
+        }
+
+        calculateArea() {
+            return this.width * this.height;
+        }
+
+        calculatePerimeter() {
+            return 2 * (this.width + this.height);
+        }
+
+        getShapeType() {
+            return "Rectangle";
+        }
+    }
+
+    class Square extends Rectangle {
+        constructor(side) {
+            super(side, side); 
+        }
+
+        getShapeType() {
+            return "Square";
+        }
+    }
+
+    class Triangle extends Shape {
+        constructor(a, b, c) {
+            super();
+            this.a = a;
+            this.b = b;
+            this.c = c;
+        }
+
+        calculateArea() {
+            const s = (this.a + this.b + this.c) / 2;
+            return Math.sqrt(s * (s - this.a) * (s - this.b) * (s - this.c));
+        }
+
+        calculatePerimeter() {
+            return this.a + this.b + this.c;
+        }
+
+        getShapeType() {
+            return "Triangle";
+        }
+    }
+
+    try {
+        const circle = new Circle(4);
+        circle.describe(); 
+
+        const rectangle = new Rectangle(5, 3);
+        rectangle.describe(); 
+
+        const square = new Square(4);
+        square.describe(); 
+
+        const triangle = new Triangle(3, 4, 5);
+        triangle.describe(); 
+    } catch (error) {
+        console.error(error.message);
+    }
+
+    </script>
+</body>
+</html>

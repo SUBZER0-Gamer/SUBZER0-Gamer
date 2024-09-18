@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA</title>
+</head>
+<body>
+    <script>
+        /* class Student{
+            // Data (Properties)
+            // name, age, standard
+            
+            constructor(name, age, username) {
+                this.Name = name;
+                this.Age = age;
+                this.Username = username;
+            }
+
+            // Methods (Action)
+            study(){
+            // Study
+            console.log(`${this.Name} is studying.`)
+            }
+
+            Play(){
+            // Play
+            }
+
+            doHomeWork(){
+            // Do Home Work
+            }
+        }
+
+        const student = new Student('Jayson', 18, '0xSwenpai')
+
+        console.log(`My name is ${student.Name}, I am ${student.Age}. My username is ${student.Username}`)
+        student.study(); */
+
+        class newStudent{
+
+            idNumber(id){
+                this.idnum = id;
+            }
+            firstName(fname){
+                this.FirstName = fname;
+            }
+            middleName(mname){
+                this.MiddleName = mname;
+            }
+            lastName(lname){
+                this.LastName = lname;
+            }
+            birthdate(bd){
+                this.Birthdate = bd;
+            }
+            username(un){
+                this.Username = un;
+            }
+            emailAddress(ea){
+                this.EmailAddress = ea;
+            }
+            password(p){
+                this.Password = p;
+            }
+            homeAddress(houseNumber, purokOrZone, barangay, municipality, province){
+                this.HouseNumber = houseNumber;
+                this.PurokOrZone = purokOrZone;
+                this.Barangay = barangay;
+                this.Municipality = municipality;
+                this.Province = province;
+            }
+        }
+
+        const NewStudent = new newStudent();
+
+        NewStudent.idNumber(`S230506`);
+
+        console.log(`My Student ID: ${NewStudent.idnum}`);
+
+        NewStudent.firstName(`Christian King`);
+
+        console.log(`My Firstname: ${NewStudent.FirstName}`);
+
+        NewStudent.middleName(`Lustina`);
+
+        console.log(`My Middlename: ${NewStudent.MiddleName}`);
+
+        NewStudent.lastName(`Cua`);
+
+        console.log(`My Lastname: ${NewStudent.LastName}`);
+
+        NewStudent.birthdate(`August 14, 2005`);
+
+        console.log(`My Birthday: ${NewStudent.Birthdate}`);
+
+        NewStudent.username(`CK_CUA`);
+
+        console.log(`My Username: ${NewStudent.Username}`);
+
+        NewStudent.emailAddress(`christiankingcua142005@gmail.com`);
+
+        console.log(`My Email Address: ${NewStudent.EmailAddress}`);
+
+        NewStudent.password(`*******`);
+
+        console.log(`My Password: ${NewStudent.Password}`);
+
+        NewStudent.homeAddress('40E', 'n/a', 'Rawis', 'Legazpi City', 'Albay');
+
+        console.log(`House Number: ${NewStudent.HouseNumber}`);
+        console.log(`Purok or Zone: ${NewStudent.PurokOrZone}`);
+        console.log(`Barangay: ${NewStudent.Barangay}`);
+        console.log(`Municipality: ${NewStudent.Municipality}`);
+        console.log(`Province: ${NewStudent.Province}`);
+    </script>
+</body>
+</html>
